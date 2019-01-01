@@ -13753,15 +13753,17 @@ Number of dog detections in dog files:  98
                                      <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
                                      <span class="p">])</span>
 
-<span class="n">transform_test</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
-                                          <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                                          <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
-                                         <span class="p">])</span>
+<span class="n">transform_test</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+                                     <span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
+                                     <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                     <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
+                                    <span class="p">])</span>
 
-<span class="n">transform_valid</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
-                                           <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                                           <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
-                                          <span class="p">])</span>
+<span class="n">transform_valid</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+                                      <span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
+                                      <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                      <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">])</span>
+                                     <span class="p">])</span>
 
 <span class="n">training_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="s1">&#39;/data/dog_images/train&#39;</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">transform_train</span><span class="p">)</span>
 <span class="n">validating_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="s1">&#39;/data/dog_images/valid&#39;</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">transform_valid</span><span class="p">)</span>
@@ -13884,7 +13886,8 @@ Number of dog detections in dog files:  98
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>based on the examples provided in the course lectures, I created three convolutional layers:</p>
+<p>Based on the examples provided in the course lectures, I sarted with two conolutional layers conv1(3x16) and conv2(16x32) but after training it didn't reach the expected accuracy (more than 10%). So, I changed the number of features to conv1(3x32) and conv2(32x64) but again it didn't work. So decided to add an extra conv layer: conv1(3x32), conv2(32x64), and conv3(64x128) and it started to learn.</p>
+<p>The three convolutional layers (in details) are:</p>
 <ul>
 <li><p>a convolutional layer that takes the 224x224 image of 3 inputs and provides 32 outputs using a kernel size of 3</p>
 </li>
@@ -13892,7 +13895,7 @@ Number of dog detections in dog files:  98
 </li>
 <li><p>a convolutional layer that takes the reduces size (after pooling) of 56x56 of 64 inputs and provides 128 outputs using a kernel size of 3</p>
 </li>
-<li><p>I flattended the input and applied a dropout function and two fully connected layers</p>
+<li><p>I flattended the input and applied a dropout function and two fully connected layers (where the last layer has 133 outputs representing the possible breed calsses)</p>
 </li>
 </ul>
 
@@ -14233,6 +14236,7 @@ Test Accuracy: 13% (116/836)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <p>I freezed the preatrained VGG16 model then decided to retrain the second fully connected linear layer: model_transfer.classifier[6] with in_features=4096 and out_features=1000 whcih was defined previously as self.fc2 = nn.Linear(500, 133) to provide 133 classes (dog breeds). Several learning rates were tried until good results acheived with a smaller lr of 0.001</p>
+<p>I think that the current use of the VGG16 pretrained model using transfer learning is suitable for the current problem as it was trained for weeks on the process of feature extraction for the Imagenet dataset then it provided 1000 classes for image classification which is similar (in the idea) to our problem. We are trying to classify images (of dogs) into 133 classes. In addition, we tried this in class while classifying flowers.</p>
 
 </div>
 </div>
@@ -14512,6 +14516,7 @@ Test Accuracy: 75% (632/836)
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong> (Three possible points for improvement)</p>
 <p>It was amazing how easyly and super fast the way we can reuse a pretrained model for a new similar problem. I think it would worth it to try the other pretrained models other than VGG16. If I have more time to use the needed resources (GPU) then I will go through a deep study for all possible learning rates and I will try several number of conv layers in addition to the number of features per layer. I think that the image resolution used (224x224) would affect the speed/learning rate in case we reduce it to 128x128, for example.</p>
+<p>In summary, Yes, the outputs are better than what I expected. I googled the dog images I used for testing and I think that all of them were correctly classified.</p>
 
 </div>
 </div>
